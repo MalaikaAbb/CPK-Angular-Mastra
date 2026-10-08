@@ -18,6 +18,7 @@ const TARGETS = [
   'src/styles.css',
   'src/app/app.config.ts',
   'src/app/features',
+  '../backend/src/mastra',
 ];
 
 const EXTENSIONS = ['.ts', '.html', '.css'];

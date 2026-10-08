@@ -26,8 +26,26 @@ import { createCopilotNodeListener } from "@copilotkit/runtime/v2/node";
 import { MastraAgent } from "@ag-ui/mastra";
 import { mastra } from '../backend/src/mastra';
 
+// subagents : guarded supervisor import start
+// SELF-DEFINED — not from the docs. The sub-agents guide's code imports two
+// modules it never shows, so the supervisor cannot load. Importing it
+// statically would take the whole runtime down with it; this keeps the
+// failure to the `subagents` key and logs why.
+const supervisorReady: Promise<boolean> = import(
+  '../backend/src/mastra/agents/subagents-supervisor'
+)
+  .then(({ subagentsSupervisorAgent }) => {
+    mastra.addAgent(subagentsSupervisorAgent, 'subagentsSupervisorAgent');
+    return true;
+  })
+  .catch((err: unknown) => {
+    console.error('[subagents] supervisor failed to load:', err);
+    return false;
+  });
+// subagents : guarded supervisor import end
+
 const runtime = new CopilotRuntime({
-  agents: () => ({
+  agents: async () => ({
     default: MastraAgent.getLocalAgent({
       mastra,
       agentId: 'myAgent',
@@ -38,6 +56,37 @@ const runtime = new CopilotRuntime({
       agentId: 'myAgent',
       resourceId: 'agent-2',
     }),
+    // copilot-runtime : "Which name identifies an agent" — the guide's
+    // `<copilot-chat agentId="my_agent" />` addresses this key.
+    my_agent: MastraAgent.getLocalAgent({
+      mastra,
+      agentId: 'myAgent',
+      resourceId: 'agent-3',
+    }),
+    // background-tasks : the guide does not name a runtime key; this one is
+    // the agent's own id.
+    'background-agents': MastraAgent.getLocalAgent({
+      mastra,
+      agentId: 'backgroundAgentsAgent',
+      resourceId: 'agent-4',
+    }),
+    // ag-ui : `research-agent` is used by the AG-UI guide and defined nowhere;
+    // it is one more alias of this harness's agent, like `default`/`support`.
+    'research-agent': MastraAgent.getLocalAgent({
+      mastra,
+      agentId: 'myAgent',
+      resourceId: 'agent-6',
+    }),
+    // subagents : registered only if the supervisor loaded.
+    ...((await supervisorReady)
+      ? {
+          subagents: MastraAgent.getLocalAgent({
+            mastra,
+            agentId: 'subagentsSupervisorAgent',
+            resourceId: 'agent-5',
+          }),
+        }
+      : {}),
   }),
   a2ui: {}
 });

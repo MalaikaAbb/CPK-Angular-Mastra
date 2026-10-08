@@ -115,6 +115,10 @@ Docs last synced **2026-08-26**.
 | [/memory](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Partial · premium | Runtime provides no memory routes, so `isAvailable()` is false |
 | [/attachments](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Working | |
 | [/headless](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Working | |
+| [/background-tasks](https://docs.copilotkit.ai/angular/mastra/background-tasks) | Partial | Guide's Angular renderer + registration snippets are missing ("Angular Showcase snippet skipped"); the card here is self-defined. Observational Memory section not wired |
+| [/subagents](https://docs.copilotkit.ai/angular/mastra/multi-agent/subagents) | Broken | Backend imports `@/mastra/_header_forwarding` and `./working-memory`, never shown; supervisor cannot load. Frontend helpers self-defined |
+| [/copilot-runtime](https://docs.copilotkit.ai/angular/mastra/copilot-runtime) | Working | `agentId="my_agent"` routes by agents-map key; Next.js handler, remote agents, mcpApps, selfManagedAgents quoted only |
+| [/ag-ui](https://docs.copilotkit.ai/angular/mastra/ag-ui) | Working | `research-agent` is undefined in the guide; registered here as an alias of the harness agent |
 
 Route metadata lives in one place — [`src/app/lib/nav-config.ts`](src/app/lib/nav-config.ts).
 The nav, route headers, and this table all describe a page exactly once.

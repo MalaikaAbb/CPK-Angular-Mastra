@@ -57,6 +57,22 @@ export const routes: Routes = [
     path: 'headless/demo',
     loadComponent: () => import('./pages/demos').then((m) => m.HeadlessDemo),
   },
+  {
+    path: 'background-tasks/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.BackgroundTasksDemo),
+  },
+  {
+    path: 'subagents/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.SubagentsDemo),
+  },
+  {
+    path: 'copilot-runtime/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.CopilotRuntimeDemo),
+  },
+  {
+    path: 'ag-ui/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.AgUiDemo),
+  },
 
   // Doc routes, inside the sidebar chrome.
   {
@@ -91,6 +107,22 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/attachments'),
       },
       { path: 'headless', loadComponent: () => import('./pages/headless') },
+      {
+        path: 'background-tasks',
+        loadComponent: () => import('./pages/background-tasks'),
+      },
+      {
+        path: 'subagents',
+        loadComponent: () => import('./pages/subagents'),
+      },
+      {
+        path: 'copilot-runtime',
+        loadComponent: () => import('./pages/copilot-runtime'),
+      },
+      {
+        path: 'ag-ui',
+        loadComponent: () => import('./pages/ag-ui'),
+      },
       { path: 'status', loadComponent: () => import('./pages/status') },
       { path: 'doc-sync', loadComponent: () => import('./pages/doc-sync') },
       { path: '**', redirectTo: '' },

@@ -12,8 +12,11 @@ import { Component } from '@angular/core';
 
 import { DemoFrame } from '../components/demo-frame';
 import { A2uiChatComponent } from '../features/a2ui/a2ui-chat.component';
+import { AgUiChatComponent } from '../features/ag-ui/ag-ui-chat.component';
 import { MediaChatComponent } from '../features/attachments/media-chat.component';
+import { BackgroundTasksChatComponent } from '../features/background-tasks/background-tasks-chat.component';
 import { ChatUiDemoComponent } from '../features/chat-ui/chat-ui-demo.component';
+import { RuntimeKeysChatComponent } from '../features/copilot-runtime/runtime-keys-chat.component';
 import { HeadlessChatComponent } from '../features/headless/headless-chat.component';
 import { HitlChatComponent } from '../features/hitl/hitl-chat.component';
 import { InspectorChatComponent } from '../features/inspector/inspector-chat.component';
@@ -22,6 +25,7 @@ import { MemoryDemoComponent } from '../features/memory/memory-demo.component';
 import { VoiceChatComponent } from '../features/media/voice-chat.component';
 import { QuickstartChat } from '../features/quickstart/quickstart-chat';
 import { SharedStateChatComponent } from '../features/shared-state/shared-state-chat.component';
+import { SubagentsChatComponent } from '../features/subagents/subagents-chat.component';
 import { ThreadsDemoComponent } from '../features/threads/threads-demo.component';
 import { ToolsChatComponent } from '../features/tools/tools-chat.component';
 
@@ -145,3 +149,37 @@ export class HeadlessDemo {}
   </app-demo-frame>`,
 })
 export class InspectorDemo {}
+
+@Component({
+  selector: 'app-background-tasks-demo',
+  imports: [DemoFrame, BackgroundTasksChatComponent],
+  template: `<app-demo-frame backTo="/background-tasks"
+    ><app-background-tasks-chat
+  /></app-demo-frame>`,
+})
+export class BackgroundTasksDemo {}
+
+@Component({
+  selector: 'app-subagents-demo',
+  imports: [DemoFrame, SubagentsChatComponent],
+  template: `<app-demo-frame backTo="/subagents"
+    ><app-subagents-chat
+  /></app-demo-frame>`,
+})
+export class SubagentsDemo {}
+
+@Component({
+  selector: 'app-copilot-runtime-demo',
+  imports: [DemoFrame, RuntimeKeysChatComponent],
+  template: `<app-demo-frame backTo="/copilot-runtime"
+    ><app-runtime-keys-chat
+  /></app-demo-frame>`,
+})
+export class CopilotRuntimeDemo {}
+
+@Component({
+  selector: 'app-ag-ui-demo',
+  imports: [DemoFrame, AgUiChatComponent],
+  template: `<app-demo-frame backTo="/ag-ui"><app-ag-ui-chat /></app-demo-frame>`,
+})
+export class AgUiDemo {}

@@ -212,6 +212,60 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: 'Agent capabilities',
+    routes: [
+      {
+        path: '/background-tasks',
+        hasDemo: true,
+        title: 'Background tasks',
+        docPath: '/angular/mastra/background-tasks',
+        summary:
+          'A tool flagged background: { enabled: true } dispatched to Mastra’s BackgroundTaskManager and surfaced as an activity card.',
+        status: 'partial',
+        statusNote:
+          'The guide’s whole frontend step is missing: both Angular snippets render as “Angular Showcase snippet skipped: missing region”. The activity card and its registration here are self-defined. Completion is out of band by design, so the card stays “working” within the turn. The Observational Memory section is not wired: its snippet uses an undefined `storage`, and `observationalMemoryActivityRendererConfig` is never shown.',
+      },
+      {
+        path: '/subagents',
+        hasDemo: true,
+        title: 'Sub-agents',
+        docPath: '/angular/mastra/multi-agent/subagents',
+        summary:
+          'A supervisor delegating to research, writing and critique sub-agents exposed as tools, with a live delegation log from shared state.',
+        status: 'broken',
+        statusNote:
+          'The guide’s backend imports `openai` from "@/mastra/_header_forwarding" and `writeDelegationsToWorkingMemory` from "./working-memory", and neither file is shown anywhere, including the page’s demo-code tab. Kept as published, the supervisor cannot load, so the `subagents` runtime key is not registered. The frontend’s readDelegations, SubAgentName, subAgentRendererConfig and the cards are not shown either; they are self-defined here.',
+      },
+    ],
+  },
+  {
+    title: 'Runtime and protocol',
+    routes: [
+      {
+        path: '/copilot-runtime',
+        hasDemo: true,
+        title: 'Copilot Runtime',
+        docPath: '/angular/mastra/copilot-runtime',
+        summary:
+          'The agents-map key as the only name the frontend can ask for, the default agent, and local versus remote Mastra agents.',
+        status: 'working',
+        statusNote:
+          'Agent-key routing and the default agent are live against this runtime’s in-process (local) Mastra agents. The guide’s Next.js route handler, getRemoteAgents, mcpApps and selfManagedAgents are quoted, not run.',
+      },
+      {
+        path: '/ag-ui',
+        hasDemo: true,
+        title: 'AG-UI',
+        docPath: '/angular/mastra/ag-ui',
+        summary:
+          'injectAgentStore over the AG-UI agent, and subscribing to its event stream with the owning injector.',
+        status: 'working',
+        statusNote:
+          'The guide’s components address `research-agent`, which it never defines. Here that key is one more alias of this harness’s agent (myAgent).',
+      },
+    ],
+  },
+  {
     title: 'Doc Sync',
     routes: [
       {

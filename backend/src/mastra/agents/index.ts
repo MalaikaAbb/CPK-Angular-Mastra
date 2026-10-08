@@ -2,6 +2,7 @@ import { openai } from "@ai-sdk/openai";
 import { Agent } from "@mastra/core/agent";
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
+import { runDeepResearchTool } from "../tools/background-research"; // [!code highlight]
 
 export const getWeather = createTool({
   id: "getWeather",
@@ -25,3 +26,21 @@ export const myAgent = new Agent({
     getWeather,
   },
 });
+
+// background-tasks : "Add the tool to your agent" start
+// https://docs.copilotkit.ai/angular/mastra/background-tasks
+// Verbatim except the import path: the guide imports
+// "@/mastra/tools/background-research", an alias this repo's tsconfig does
+// not define, so it is the equivalent relative path here.
+export const backgroundAgentsAgent = new Agent({
+  id: "background-agents",
+  name: "Background Agents Agent",
+  tools: { runDeepResearchTool }, // [!code highlight]
+  model: openai("gpt-4.1"),
+  instructions:
+    "You are a research assistant that dispatches long-running work to the " +
+    "background. When the user asks you to research a topic, call the " +
+    "run_deep_research tool ONCE, then send a short message saying the work " +
+    "is running in the background.",
+});
+// background-tasks : "Add the tool to your agent" end

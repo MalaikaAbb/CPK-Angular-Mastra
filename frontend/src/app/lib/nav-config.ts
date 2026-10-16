@@ -236,6 +236,17 @@ export const NAV: NavGroup[] = [
         statusNote:
           'The guide’s backend imports `openai` from "@/mastra/_header_forwarding" and `writeDelegationsToWorkingMemory` from "./working-memory", and neither file is shown anywhere, including the page’s demo-code tab. Kept as published, the supervisor cannot load, so the `subagents` runtime key is not registered. The frontend’s readDelegations, SubAgentName, subAgentRendererConfig and the cards are not shown either; they are self-defined here.',
       },
+      {
+        path: '/webmcp',
+        hasDemo: true,
+        title: 'WebMCP',
+        docPath: '/angular/mastra/webmcp',
+        summary:
+          'Expose browser-side actions as structured tools that compatible agents can discover and call.',
+        status: 'working',
+        statusNote:
+          'Requires Chrome 149+ or chrome://flags/#enable-webmcp-testing for document.modelContext. Safely no-ops when unavailable; the frontend tool remains callable by the CopilotKit agent.',
+      },
     ],
   },
   {

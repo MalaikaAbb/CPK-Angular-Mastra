@@ -73,6 +73,10 @@ export const routes: Routes = [
     path: 'ag-ui/demo',
     loadComponent: () => import('./pages/demos').then((m) => m.AgUiDemo),
   },
+  {
+    path: 'webmcp/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.WebmcpDemo),
+  },
 
   // Doc routes, inside the sidebar chrome.
   {
@@ -122,6 +126,10 @@ export const routes: Routes = [
       {
         path: 'ag-ui',
         loadComponent: () => import('./pages/ag-ui'),
+      },
+      {
+        path: 'webmcp',
+        loadComponent: () => import('./pages/webmcp'),
       },
       { path: 'status', loadComponent: () => import('./pages/status') },
       { path: 'doc-sync', loadComponent: () => import('./pages/doc-sync') },

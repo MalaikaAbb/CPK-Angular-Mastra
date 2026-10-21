@@ -1,6 +1,7 @@
 import { openai } from "@ai-sdk/openai";
 import { Agent } from "@mastra/core/agent";
 import { createTool } from "@mastra/core/tools";
+import { Memory } from "@mastra/memory";
 import { z } from "zod";
 import { runDeepResearchTool } from "../tools/background-research"; // [!code highlight]
 
@@ -17,15 +18,27 @@ export const getWeather = createTool({
   },
 });
 
+
+type AgUiContext = { context?: { description: string; value: string }[] };
+
 export const myAgent = new Agent({
   id: "myAgent",
   name: "My Agent",
-  instructions: "You are a helpful assistant!",
+  instructions: ({ requestContext }) => {
+    const context =
+      (requestContext.get("ag-ui") as AgUiContext | undefined)?.context ?? [];
+    return [
+      "You are a helpful assistant!",
+      ...context.map((entry) => `${entry.description}: ${entry.value}`),
+    ].join("\n");
+  },
   model: openai("gpt-5.4-mini"),
+  memory: new Memory({ options: { workingMemory: { enabled: true } } }),
   tools: {
     getWeather,
   },
 });
+
 
 // background-tasks : "Add the tool to your agent" start
 // https://docs.copilotkit.ai/angular/mastra/background-tasks
@@ -44,3 +57,25 @@ export const backgroundAgentsAgent = new Agent({
     "is running in the background.",
 });
 // background-tasks : "Add the tool to your agent" end
+
+
+
+
+
+// export const myAgent = new Agent({
+//   id: "myAgent",
+//   name: "My Agent",
+//   instructions: ({ requestContext }) => {
+//     const context =
+//       (requestContext.get("ag-ui") as AgUiContext | undefined)?.context ?? [];
+//     return [
+//       "You are a helpful assistant!",
+//       ...context.map((entry) => `${entry.description}: ${entry.value}`),
+//     ].join("\n");
+//   },
+//   model: openai("gpt-5.4-mini"),
+//   memory: new Memory({ options: { workingMemory: { enabled: true } } }),
+//   tools: {
+//     getWeather,
+//   },
+// });

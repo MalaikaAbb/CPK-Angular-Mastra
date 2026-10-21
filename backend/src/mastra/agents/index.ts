@@ -24,16 +24,16 @@ type AgUiContext = { context?: { description: string; value: string }[] };
 export const myAgent = new Agent({
   id: "myAgent",
   name: "My Agent",
-  instructions: ({ requestContext }) => {
-    const context =
-      (requestContext.get("ag-ui") as AgUiContext | undefined)?.context ?? [];
-    return [
-      "You are a helpful assistant!",
-      ...context.map((entry) => `${entry.description}: ${entry.value}`),
-    ].join("\n");
-  },
+  // instructions: ({ requestContext }) => {
+  //   const context =
+  //     (requestContext.get("ag-ui") as AgUiContext | undefined)?.context ?? [];
+  //   return [
+  //     "You are a helpful assistant!",
+  //     ...context.map((entry) => `${entry.description}: ${entry.value}`),
+  //   ].join("\n");
+  // },
   model: openai("gpt-5.4-mini"),
-  memory: new Memory({ options: { workingMemory: { enabled: true } } }),
+  //memory: new Memory({ options: { workingMemory: { enabled: true } } }),
   tools: {
     getWeather,
   },

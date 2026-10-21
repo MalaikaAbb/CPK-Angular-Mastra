@@ -14,6 +14,7 @@ The agent is a Mastra agent, bridged to CopilotKit through
 | Node | >= 22.13 (developed on v24) |
 | npm | v12 |
 | Model key | `OPENAI_API_KEY` — the agent uses an OpenAI model |
+| Intelligence key | `CPK_INTELLIGENCE_API_KEY` — CopilotKit Intelligence, which serves the thread endpoints |
 
 ## Install
 
@@ -28,10 +29,14 @@ cd ../frontend && npm install
 
 ## Set the model key
 
-`OPENAI_API_KEY` must be present in the environment of the **runtime process**.
+`OPENAI_API_KEY` and `CPK_INTELLIGENCE_API_KEY` must be present in the
+environment of the **runtime process**. Either export them, or put them in the
+root `.env` (copy `.env.example`): `frontend/server.ts` loads that file on
+startup, and an exported variable wins over it.
 
 ```bash
 export OPENAI_API_KEY=sk-...
+export CPK_INTELLIGENCE_API_KEY=...
 ```
 
 > Because the agent is loaded in-process, nothing reads `backend/.env` — that
@@ -111,8 +116,8 @@ Docs last synced **2026-08-26**.
 | [/voice-multimodal](https://docs.copilotkit.ai/angular/mastra/guides/voice-multimodal) | Partial | Microphone records, but no transcription service is configured |
 | [/human-in-the-loop](https://docs.copilotkit.ai/angular/mastra/guides/human-in-the-loop) | Working | Tool path is live; interrupt panel idles until the agent suspends a tool. The guide's `store().interruptController` section is unimplemented — that API is in no published build |
 | [/shared-state](https://docs.copilotkit.ai/angular/mastra/guides/shared-state) | Working | |
-| [/threads](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Partial · premium | Thread endpoints need a CopilotKit Intelligence license |
-| [/memory](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Partial · premium | Runtime provides no memory routes, so `isAvailable()` is false |
+| [/threads](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Partial · premium | Thread endpoints come from the runtime's CopilotKit Intelligence client |
+| [/memory](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Partial · premium | Runtime grants `memory.access`; the Intelligence project returns `403 MEMORY_NOT_ENTITLED`, and the sample shows an empty panel |
 | [/attachments](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Working | |
 | [/headless](https://docs.copilotkit.ai/angular/mastra/guides/threads-memory-attachments-headless) | Working | |
 | [/background-tasks](https://docs.copilotkit.ai/angular/mastra/background-tasks) | Partial | Guide's Angular renderer + registration snippets are missing ("Angular Showcase snippet skipped"); the card here is self-defined. Observational Memory section not wired |
@@ -195,10 +200,13 @@ from `http://localhost` it appears nowhere, including on the same route. This
 repo ships an SSR production server (`npm run serve:ssr:frontend`), so the step
 is reproducibly wrong for anyone who follows it against a production build.
 
-**Premium routes render locked states.** Threads and memory endpoints come from
-the CopilotKit Intelligence Platform. Without a license key the list
-stays empty and the drawer renders its locked state — that is the expected
-result here, not a bug.
+**Threads run on CopilotKit Intelligence.** `frontend/server.ts` passes a
+`CopilotKitIntelligence` client to the runtime, so `/threads` lists, replays,
+and mutates threads. A locked drawer there now means `CPK_INTELLIGENCE_API_KEY`
+is missing or invalid. `identifyUser` is a local placeholder: every visitor
+shares one user id and one thread history. Without a key the runtime refuses
+to start (`CopilotKitIntelligence apiKey is required`), which takes every route
+down, not just `/threads`; `npx copilotkit project select` provisions one.
 
 ## Other commands
 

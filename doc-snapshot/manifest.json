@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "docsRoot": "https://docs.copilotkit.ai/angular/mastra",
-  "syncedAt": "2026-10-16T07:34:59.521Z",
+  "syncedAt": "2026-10-19T12:57:34.955Z",
   "pages": {
     "/angular/mastra": {
       "file": "angular__mastra.md",
@@ -14,7 +14,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/ag-ui": {
       "file": "angular__mastra__ag-ui.md",
@@ -26,7 +26,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/background-tasks": {
       "file": "angular__mastra__background-tasks.md",
@@ -38,7 +38,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/copilot-runtime": {
       "file": "angular__mastra__copilot-runtime.md",
@@ -50,7 +50,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/guides/a2ui": {
       "file": "angular__mastra__guides__a2ui.md",
@@ -62,7 +62,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/guides/chat-ui": {
       "file": "angular__mastra__guides__chat-ui.md",
@@ -74,7 +74,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/guides/frontend-tools-generative-ui": {
       "file": "angular__mastra__guides__frontend-tools-generative-ui.md",
@@ -86,7 +86,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:01 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/guides/human-in-the-loop": {
       "file": "angular__mastra__guides__human-in-the-loop.md",
@@ -98,7 +98,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/guides/shared-state": {
       "file": "angular__mastra__guides__shared-state.md",
@@ -110,7 +110,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/guides/threads-memory-attachments-headless": {
       "file": "angular__mastra__guides__threads-memory-attachments-headless.md",
@@ -125,7 +125,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:35 GMT"
     },
     "/angular/mastra/guides/voice-multimodal": {
       "file": "angular__mastra__guides__voice-multimodal.md",
@@ -137,7 +137,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/inspector": {
       "file": "angular__mastra__inspector.md",
@@ -149,7 +149,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:01 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/multi-agent/subagents": {
       "file": "angular__mastra__multi-agent__subagents.md",
@@ -161,7 +161,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:01 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/quickstart": {
       "file": "angular__mastra__quickstart.md",
@@ -173,23 +173,23 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 07:35:01 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     },
     "/angular/mastra/webmcp": {
       "file": "angular__mastra__webmcp.md",
-      "sha256": "9fcfa76ba7731076f11a6eecae90fcfa2c58acf1372b7fc560d92c761a80155c",
-      "bytes": 7527,
-      "lines": 170,
+      "sha256": "e58e66cb3c36d97a3bc6bcf03c18d7d4a230c7e39f1787f73224be5e237606f2",
+      "bytes": 7526,
+      "lines": 169,
       "routes": [
         "/webmcp"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Fri, 16 Oct 2026 10:45:00 GMT"
+      "date": "Mon, 19 Oct 2026 12:57:36 GMT"
     }
   },
   "sitemap": {
-    "fetchedAt": "2026-10-16T07:34:59.521Z",
+    "fetchedAt": "2026-10-19T12:57:34.955Z",
     "urlsUnderRoot": 4,
     "knownUnmapped": [
       "https://docs.copilotkit.ai/angular/mastra/ag-ui",

@@ -166,4 +166,3 @@ If the tool does not appear, check the browser setup first, then verify that the
 
 - [WebMCP specification](https://webmachinelearning.github.io/webmcp/)
 - [Chrome WebMCP best practices](https://developer.chrome.com/docs/ai/webmcp/best-practices)
-
